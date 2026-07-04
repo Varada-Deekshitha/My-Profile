@@ -51,8 +51,10 @@ class ContactView(APIView):
         serializer = ContactMessageSerializer(data=request.data)
         if serializer.is_valid():
             msg = serializer.save()
-            # Send real-time email notification
+            # Send real-time email notification to owner
             self._send_notification(msg)
+            # Send auto-reply confirmation to the sender
+            self._send_auto_reply(msg)
             return Response(
                 {'message': 'Message received! I will get back to you soon.'},
                 status=status.HTTP_201_CREATED,
@@ -96,6 +98,46 @@ Received at: {msg.created_at.strftime('%d %b %Y, %I:%M %p')} IST
         except Exception as e:
             # Don't break the API response if email fails
             logger.error(f'Failed to send email notification: {e}')
+
+    def _send_auto_reply(self, msg):
+        """Send auto-reply confirmation email to the person who contacted."""
+        try:
+            subject = f'Thank you for reaching out, {msg.name.split()[0]}!'
+
+            body = f"""
+Hi {msg.name},
+
+Thank you for reaching out! I have received your message and will get back to you as soon as possible.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  YOUR MESSAGE DETAILS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Subject : {msg.subject}
+  Message : {msg.message}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+I typically respond within 24 hours.
+
+Looking forward to connecting with you!
+
+Best regards,
+Varada Deekshitha
+B.Tech CSE | Full Stack Developer
+varadadeekshitha@gmail.com
+GitHub  : https://github.com/Varada-Deekshitha
+LinkedIn: https://www.linkedin.com/in/varada-deekshitha-7b071b309
+"""
+            send_mail(
+                subject=subject,
+                message=body,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[msg.email],
+                fail_silently=False,
+            )
+            logger.info(f'Auto-reply sent to {msg.email}')
+
+        except Exception as e:
+            logger.error(f'Failed to send auto-reply: {e}')
 
 
 class PortfolioSummaryView(APIView):

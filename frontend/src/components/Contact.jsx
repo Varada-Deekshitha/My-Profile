@@ -30,13 +30,19 @@ export default function Contact() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
-      setStatus(r.ok ? 'sent' : 'error')
-      if (r.ok) setForm({ name: '', email: '', subject: '', message: '' })
+      if (r.ok) {
+        setStatus('sent')
+        setForm({ name: '', email: '', subject: '', message: '' })
+      } else {
+        const data = await r.json()
+        // Show specific validation error if available
+        const firstError = Object.values(data)[0]
+        setStatus(Array.isArray(firstError) ? firstError[0] : 'error')
+      }
     } catch {
-      setStatus('sent')
-      setForm({ name: '', email: '', subject: '', message: '' })
+      setStatus('error')
     }
-    setTimeout(() => setStatus(null), 4000)
+    setTimeout(() => setStatus(null), 5000)
   }
 
   const inp = {
@@ -186,6 +192,7 @@ export default function Contact() {
                 {status === 'sent'    && <div className="ct-msg cm-ok">✓ Message sent! I'll get back to you soon.</div>}
                 {status === 'error'   && <div className="ct-msg cm-err">Something went wrong. Please try again.</div>}
                 {status === 'sending' && <div className="ct-msg cm-snd">Sending your message...</div>}
+                {status && !['sent','error','sending'].includes(status) && <div className="ct-msg cm-err">{status}</div>}
               </form>
             </div>
           </div>
