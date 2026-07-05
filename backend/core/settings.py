@@ -78,13 +78,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://127.0.0.1:5173',
-    'https://my-profile-k8cs.vercel.app',
+    'https://my-profile-mbm6-three.vercel.app',
 ]
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://my-profile-k8cs.vercel.app',
-    'https://my-profile-4-r1fi.onrender.com',
+    'https://my-profile-mbm6-three.vercel.app',
+    'https://my-profile-6-edyc.onrender.com',
 ]
 
 # ── DRF ───────────────────────────────────────────────────────────────────────
