@@ -6,7 +6,7 @@ SECRET_KEY = 'django-insecure-eh8c7t+e590$o^$n$h#^^-q)(bxy=bo_8ujkyvo!srf67!cee3
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -78,8 +78,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://127.0.0.1:5173',
+    'https://my-profile-k8cs.vercel.app',
 ]
 CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://my-profile-k8cs.vercel.app',
+    'https://my-profile-4-r1fi.onrender.com',
+]
 
 # ── DRF ───────────────────────────────────────────────────────────────────────
 REST_FRAMEWORK = {
