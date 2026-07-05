@@ -6,7 +6,7 @@ SECRET_KEY = 'django-insecure-%*_f!6nfr+%1yywk3yiaga74#sz7js*9%#crac2hs)@l8g_9p6
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'my-profile-4-r1fi.onrender.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -60,10 +60,16 @@ DATABASES = {
     }
 }
 
-# CORS — allow React dev server
+# ── CORS ─────────────────────────────────────────────────────────────────────
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://127.0.0.1:5173',
+    'https://my-profile-k8cs.vercel.app',
+]
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://my-profile-k8cs.vercel.app',
 ]
 
 # DRF settings

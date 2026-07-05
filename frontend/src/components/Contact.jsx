@@ -7,6 +7,8 @@ const items = [
   { icon: '🐙', label: 'GitHub',   value: 'github.com/Varada-Deekshitha',      href: 'https://github.com/Varada-Deekshitha', color: '#a594ff' },
 ]
 
+const API_BASE = import.meta.env.VITE_API_URL || ''
+
 export default function Contact() {
   const ref = useRef(null)
   const [vis, setVis] = useState(false)
@@ -25,7 +27,7 @@ export default function Contact() {
     e.preventDefault()
     setStatus('sending')
     try {
-      const r = await fetch('/api/contact/', {
+      const r = await fetch(`${API_BASE}/api/contact/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
