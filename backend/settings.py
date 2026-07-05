@@ -67,9 +67,12 @@ CORS_ALLOWED_ORIGINS = [
     'https://my-profile-k8cs.vercel.app',
 ]
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_ALL_HEADERS = True
 
 CSRF_TRUSTED_ORIGINS = [
     'https://my-profile-k8cs.vercel.app',
+    'https://my-profile-4-r1fi.onrender.com',
 ]
 
 # DRF settings
