@@ -7,7 +7,7 @@ const items = [
   { icon: '🐙', label: 'GitHub',   value: 'github.com/Varada-Deekshitha',      href: 'https://github.com/Varada-Deekshitha', color: '#a594ff' },
 ]
 
-const API_BASE = import.meta.env.VITE_API_URL || ''
+const API_BASE = import.meta.env.VITE_API_URL || 'https://my-profile-4-r1fi.onrender.com'
 
 export default function Contact() {
   const ref = useRef(null)
