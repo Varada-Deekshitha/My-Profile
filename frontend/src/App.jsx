@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     // Wake up Render backend on page load (prevents cold start delay on contact form)
-    const API = import.meta.env.VITE_API_URL || 'https://my-profile-6-edyc.onrender.com'
+    const API = import.meta.env.VITE_API_URL || 'https://my-profile-hyrl.onrender.com'
     fetch(`${API}/api/projects/`).catch(() => {})
   }, [])
 

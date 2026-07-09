@@ -73,7 +73,7 @@ CORS_ALLOW_ALL_HEADERS = True
 
 CSRF_TRUSTED_ORIGINS = [
     'https://my-profile-mbm6-three.vercel.app',
-    'https://my-profile-6-edyc.onrender.com',
+    'https://my-profile-hyrl.onrender.com',
 ]
 
 # DRF settings
