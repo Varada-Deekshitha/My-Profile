@@ -65,6 +65,9 @@ DATABASES = {
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://127.0.0.1:5173',
+    'https://my-profile-k8cs.vercel.app',
+    'https://varadadeekshitha-por-git-8e2cd0-varadadeekshitha-3045s-projects.vercel.app',
+    'https://varadadeekshitha-portfolio-oqdi3zj3q.vercel.app',
     'https://my-profile-mbm6-three.vercel.app',
 ]
 CORS_ALLOW_CREDENTIALS = True
@@ -72,6 +75,9 @@ CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOW_ALL_HEADERS = True
 
 CSRF_TRUSTED_ORIGINS = [
+    'https://my-profile-k8cs.vercel.app',
+    'https://varadadeekshitha-por-git-8e2cd0-varadadeekshitha-3045s-projects.vercel.app',
+    'https://varadadeekshitha-portfolio-oqdi3zj3q.vercel.app',
     'https://my-profile-mbm6-three.vercel.app',
     'https://my-profile-hyrl.onrender.com',
 ]
