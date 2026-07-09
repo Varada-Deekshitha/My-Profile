@@ -13,6 +13,12 @@ function App() {
   const [activeSection, setActiveSection] = useState('hero')
 
   useEffect(() => {
+    // Wake up Render backend on page load (prevents cold start delay on contact form)
+    const API = import.meta.env.VITE_API_URL || 'https://my-profile-6-edyc.onrender.com'
+    fetch(`${API}/api/projects/`).catch(() => {})
+  }, [])
+
+  useEffect(() => {
     const handleScroll = () => {
       const sections = ['hero', 'about', 'skills', 'projects', 'experience', 'contact']
       for (const id of sections) {

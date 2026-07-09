@@ -193,7 +193,7 @@ export default function Contact() {
                 </button>
                 {status === 'sent'    && <div className="ct-msg cm-ok">✓ Message sent! I'll get back to you soon.</div>}
                 {status === 'error'   && <div className="ct-msg cm-err">Something went wrong. Please try again.</div>}
-                {status === 'sending' && <div className="ct-msg cm-snd">Sending your message...</div>}
+                {status === 'sending' && <div className="ct-msg cm-snd">⏳ Sending... (may take a few seconds)</div>}
                 {status && !['sent','error','sending'].includes(status) && <div className="ct-msg cm-err">{status}</div>}
               </form>
             </div>
