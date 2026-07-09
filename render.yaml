@@ -3,10 +3,12 @@ services:
     name: my-profile-backend
     runtime: python
     rootDir: backend
-    buildCommand: pip install -r requirements.txt && python manage.py migrate && python manage.py seed
-    startCommand: gunicorn wsgi:application --bind 0.0.0.0:$PORT
+    buildCommand: "pip install -r requirements.txt && python manage.py migrate --run-syncdb && python manage.py seed"
+    startCommand: "gunicorn wsgi:application"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: settings
+      - key: EMAIL_HOST_PASSWORD
+        value: mygg tzkg qqtl xuyq
       - key: PYTHON_VERSION
-        value: 3.11.0
+        value: "3.11.0"
